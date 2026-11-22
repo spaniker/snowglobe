@@ -3,12 +3,22 @@
 [ext_resource type="Script" uid="uid://c08f0w5fg563f" path="res://player.gd" id="1_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://p33ytvr6m1ke" path="res://snowBackground.jpg" id="1_7mycd"]
 [ext_resource type="Texture2D" uid="uid://dc6nj7wk1br1i" path="res://penguin.webp" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://coufn4uuadqsq" path="res://basket.png" id="1_lquwl"]
 [ext_resource type="Texture2D" uid="uid://b87qfuwe6ykr2" path="res://snowball.png" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://ckihe2dax3rjm" path="res://snowball.tscn" id="4_1bvp3"]
+[ext_resource type="Script" uid="uid://cmq0yswtkn4l7" path="res://player_2.gd" id="7_5vw27"]
+[ext_resource type="Texture2D" uid="uid://c8tb4vawf11vd" path="res://penguin (1).png" id="8_kek77"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b1g8g"]
+radius = 206.80084
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1bvp3"]
 radius = 73.0
 height = 445.83447
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xvnu6"]
+radius = 82.0
+height = 232.0
 
 [node name="Node2D" type="Node2D" unique_id=2110419258]
 
@@ -16,6 +26,19 @@ height = 445.83447
 position = Vector2(578.5, 343.5)
 scale = Vector2(2.15, 1.8972223)
 texture = ExtResource("1_7mycd")
+
+[node name="Basket" type="Area2D" parent="." unique_id=402363079 groups=["basket"]]
+position = Vector2(-230, -82)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Basket" unique_id=1276431112]
+position = Vector2(924, 371.2)
+scale = Vector2(0.3, 0.24172662)
+shape = SubResource("CircleShape2D_b1g8g")
+
+[node name="Sprite2D" type="Sprite2D" parent="Basket" unique_id=142985365]
+position = Vector2(923, 371.2)
+scale = Vector2(0.3, 0.24172662)
+texture = ExtResource("1_lquwl")
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=959422412]
 position = Vector2(-230, -82)
@@ -34,37 +57,10 @@ position = Vector2(431, 240)
 scale = Vector2(1, -0.47999883)
 shape = SubResource("CapsuleShape2D_1bvp3")
 
-[node name="SnowballOne" type="Sprite2D" parent="Player" unique_id=1320167316]
+[node name="HeldSnowball" type="Sprite2D" parent="Player" unique_id=1320167316]
 visible = false
 position = Vector2(486, 283)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_h2yge")
-
-[node name="SnowballTwo" type="Sprite2D" parent="Player" unique_id=1507512641]
-visible = false
-position = Vector2(479.99997, 272.99997)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_h2yge")
-
-[node name="SnowballTwo" type="Sprite2D" parent="Player/SnowballTwo" unique_id=1844535936]
-position = Vector2(20.000336, -319.9997)
-scale = Vector2(1, 1.02)
-texture = ExtResource("3_h2yge")
-
-[node name="SnowballThree" type="Sprite2D" parent="Player" unique_id=290720126]
-visible = false
-position = Vector2(479.99997, 272.99997)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_h2yge")
-
-[node name="SnowballTwo" type="Sprite2D" parent="Player/SnowballThree" unique_id=959197155]
-position = Vector2(20.000336, -319.9997)
-scale = Vector2(1, 1.02)
-texture = ExtResource("3_h2yge")
-
-[node name="SnowballTwo" type="Sprite2D" parent="Player/SnowballThree/SnowballTwo" unique_id=1252766547]
-position = Vector2(3.2424927e-05, -323.52942)
-scale = Vector2(1, 1.02)
 texture = ExtResource("3_h2yge")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Player" unique_id=1669607031]
@@ -75,6 +71,28 @@ offset_top = 30.0
 offset_right = 1070.0
 offset_bottom = 53.0
 text = "snowballs: 0"
+
+[node name="Player2" type="CharacterBody2D" parent="." unique_id=1414740980]
+script = ExtResource("7_5vw27")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player2" unique_id=714084444]
+position = Vector2(954, 182)
+scale = Vector2(0.46706587, 0.4311164)
+texture = ExtResource("8_kek77")
+
+[node name="PickupArea" type="Area2D" parent="Player2" unique_id=2046041335]
+position = Vector2(6.1035156e-05, 0)
+scale = Vector2(0.99999994, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2/PickupArea" unique_id=1068230587]
+position = Vector2(956, 184)
+shape = SubResource("CapsuleShape2D_xvnu6")
+
+[node name="HeldSnowball" type="Sprite2D" parent="Player2/PickupArea" unique_id=2063569603]
+visible = false
+position = Vector2(1002.0001, 206.00003)
+scale = Vector2(0.05599998, 0.054000065)
+texture = ExtResource("3_h2yge")
 
 [node name="Snowball" parent="." unique_id=1933276526 instance=ExtResource("4_1bvp3")]
 position = Vector2(-1149, -120)
