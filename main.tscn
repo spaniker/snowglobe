@@ -7,90 +7,276 @@
 [ext_resource type="PackedScene" uid="uid://ckihe2dax3rjm" path="res://snowball.tscn" id="4_1bvp3"]
 [ext_resource type="Script" uid="uid://k0xkaam4kjpk" path="res://snowball_one.gd" id="5_272bh"]
 [ext_resource type="Script" uid="uid://dwpnk2xs2bob3" path="res://snowball_three.gd" id="6_5vw27"]
+[ext_resource type="Script" uid="uid://cmq0yswtkn4l7" path="res://player_2.gd" id="8_5vw27"]
+[ext_resource type="Texture2D" uid="uid://mpf0egx0j42w" path="res://redPenguin.png" id="8_kek77"]
+[ext_resource type="Texture2D" uid="uid://cacaleyp33o0f" path="res://heart-removebg-preview.png" id="9_4c57u"]
+[ext_resource type="PackedScene" uid="uid://dm5eiu60si1hs" path="res://baby_penguin.tscn" id="12_dg77c"]
+[ext_resource type="Script" uid="uid://2r786odcsmx" path="res://score.gd" id="13_w48qg"]
+[ext_resource type="Texture2D" uid="uid://vgl15anhunr8" path="res://images-removebg-preview.png" id="13_ycdy4"]
+[ext_resource type="Texture2D" uid="uid://b30u6ve2egn1s" path="res://image.png" id="14_vivmo"]
+[ext_resource type="Script" uid="uid://dq7e31wvdhp2g" path="res://game_over.gd" id="14_w48qg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1bvp3"]
 radius = 73.0
 height = 445.83447
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w1u6h"]
+radius = 54.0
+height = 194.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b1g8g"]
+radius = 303.3335
+height = 920.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qfjdp"]
+radius = 226.66663
+height = 800.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_51520"]
+size = Vector2(1397, 34)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qfjdp"]
+size = Vector2(50, 695.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j8nqg"]
+size = Vector2(1182, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f4bny"]
+size = Vector2(89, 709)
+
+[sub_resource type="FontVariation" id="FontVariation_2cqfq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ycdy4"]
+font = SubResource("FontVariation_2cqfq")
+font_size = 28
+font_color = Color(0.011764706, 0.011764706, 0.011764706, 1)
+
 [node name="Node2D" type="Node2D" unique_id=2110419258]
+position = Vector2(-7, 31)
 
 [node name="Snowball" parent="." unique_id=1933276526 instance=ExtResource("4_1bvp3")]
-position = Vector2(463, -106)
+position = Vector2(200, -309)
 
 [node name="Snowball2" parent="." unique_id=1083809803 instance=ExtResource("4_1bvp3")]
-position = Vector2(244, 103)
+position = Vector2(200, -56)
 
 [node name="Snowball3" parent="." unique_id=325336188 instance=ExtResource("4_1bvp3")]
 z_index = 5
-position = Vector2(33, 32)
+position = Vector2(200, 202)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=724129610]
 z_index = -3
-position = Vector2(590, 307)
+position = Vector2(589, 308)
 scale = Vector2(2.15, 1.8972223)
 texture = ExtResource("1_7mycd")
 
-[node name="Player" type="CharacterBody2D" parent="." unique_id=959422412]
-position = Vector2(-230, -82)
+[node name="Player" type="CharacterBody2D" parent="." unique_id=959422412 groups=["penguins"]]
+position = Vector2(1091, 300)
 script = ExtResource("1_0xm2m")
 
-[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=714545535]
-position = Vector2(432.00006, 234)
+[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=714545535 groups=["penguins"]]
 scale = Vector2(0.244, 0.25)
 texture = ExtResource("1_ig7tw")
+flip_h = true
 
-[node name="PickupArea" type="Area2D" parent="Player" unique_id=1639901760 groups=["snowball"]]
-position = Vector2(-1, -2)
+[node name="PickupArea" type="Area2D" parent="Player" unique_id=1639901760 groups=["penguins"]]
+position = Vector2(39, 84)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/PickupArea" unique_id=691489953]
-position = Vector2(431, 240)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/PickupArea" unique_id=691489953 groups=["penguins"]]
+position = Vector2(-40, -80)
 scale = Vector2(1, -0.47999883)
 shape = SubResource("CapsuleShape2D_1bvp3")
 
-[node name="SnowballOne" type="Sprite2D" parent="Player" unique_id=1320167316]
+[node name="SnowballOne" type="Sprite2D" parent="Player" unique_id=1320167316 groups=["penguins"]]
 visible = false
-position = Vector2(486, 283)
+position = Vector2(66.00003, 41.000015)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_h2yge")
 script = ExtResource("5_272bh")
 
-[node name="SnowballTwo" type="Sprite2D" parent="Player" unique_id=1507512641]
+[node name="SnowballTwo" type="Sprite2D" parent="Player" unique_id=1507512641 groups=["penguins"]]
 visible = false
-position = Vector2(479.99997, 272.99997)
+position = Vector2(68, 35.999985)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_h2yge")
 
-[node name="SnowballTwo" type="Sprite2D" parent="Player/SnowballTwo" unique_id=1844535936]
+[node name="SnowballTwo" type="Sprite2D" parent="Player/SnowballTwo" unique_id=1844535936 groups=["penguins"]]
 position = Vector2(20.000336, -319.9997)
 scale = Vector2(1, 1.02)
 texture = ExtResource("3_h2yge")
 
-[node name="SnowballThree" type="Sprite2D" parent="Player" unique_id=290720126]
+[node name="SnowballThree" type="Sprite2D" parent="Player" unique_id=290720126 groups=["penguins"]]
 visible = false
-position = Vector2(479.99997, 272.99997)
+position = Vector2(65, 38.999985)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_h2yge")
 script = ExtResource("6_5vw27")
 
-[node name="SnowballTwo" type="Sprite2D" parent="Player/SnowballThree" unique_id=959197155]
+[node name="SnowballTwo" type="Sprite2D" parent="Player/SnowballThree" unique_id=959197155 groups=["penguins"]]
 position = Vector2(20.000336, -319.9997)
 scale = Vector2(1, 1.02)
 texture = ExtResource("3_h2yge")
 
-[node name="SnowballTwo" type="Sprite2D" parent="Player/SnowballThree/SnowballTwo" unique_id=1252766547]
+[node name="SnowballTwo" type="Sprite2D" parent="Player/SnowballThree/SnowballTwo" unique_id=1252766547 groups=["penguins"]]
 position = Vector2(3.2424927e-05, -323.52942)
 scale = Vector2(1, 1.02)
 texture = ExtResource("3_h2yge")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Player" unique_id=1669607031]
+[node name="CanvasLayer" type="CanvasLayer" parent="Player" unique_id=1669607031 groups=["penguins"]]
 layer = 0
 visible = false
 
-[node name="SnowballCountDisplay" type="Label" parent="Player/CanvasLayer" unique_id=676164038]
+[node name="SnowballCountDisplay" type="Label" parent="Player/CanvasLayer" unique_id=676164038 groups=["penguins"]]
 offset_left = 975.0
 offset_top = 30.0
 offset_right = 1070.0
 offset_bottom = 53.0
 text = "snowballs: 0"
 
+[node name="redPenguin" type="Sprite2D" parent="Player" unique_id=246406823 groups=["penguins"]]
+visible = false
+position = Vector2(1, -0.99998474)
+scale = Vector2(0.48999995, 0.506)
+texture = ExtResource("8_kek77")
+flip_h = true
+
+[node name="Heart" type="Sprite2D" parent="Player" unique_id=2058678915]
+visible = false
+z_index = 3
+position = Vector2(-5.999962, 4.000004)
+scale = Vector2(0.13062246, 0.12614393)
+texture = ExtResource("9_4c57u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=588569681]
+position = Vector2(-1, 5)
+shape = SubResource("CapsuleShape2D_w1u6h")
+
+[node name="Timer" type="Timer" parent="Player" unique_id=646526157]
+wait_time = 2.0
+one_shot = true
+
+[node name="gameOver" type="Sprite2D" parent="Player" unique_id=1990134472]
+visible = false
+z_index = 12
+position = Vector2(-498.2545, 9.852371)
+scale = Vector2(1.589877, 1.4181166)
+texture = ExtResource("14_vivmo")
+script = ExtResource("14_w48qg")
+
+[node name="Player2" type="CharacterBody2D" parent="." unique_id=1105528158 groups=["penguins"]]
+position = Vector2(120, 306)
+scale = Vector2(0.3, 0.3)
+script = ExtResource("8_5vw27")
+
+[node name="gameOver" type="Sprite2D" parent="Player2" unique_id=608769307]
+visible = false
+z_index = 12
+position = Vector2(1605, 13.333298)
+scale = Vector2(1.59, 1.371)
+texture = ExtResource("14_vivmo")
+script = ExtResource("14_w48qg")
+
+[node name="Heart" type="Sprite2D" parent="Player2" unique_id=618107000]
+visible = false
+z_index = 3
+position = Vector2(26.666676, 9.999959)
+scale = Vector2(0.5965638, 0.55993897)
+texture = ExtResource("9_4c57u")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player2" unique_id=1428702483 groups=["penguins"]]
+texture = ExtResource("1_ig7tw")
+
+[node name="PickupArea" type="Area2D" parent="Player2" unique_id=478898340 groups=["penguins"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2/PickupArea" unique_id=837777512 groups=["penguins"]]
+position = Vector2(6.666463, 10)
+shape = SubResource("CapsuleShape2D_b1g8g")
+
+[node name="SnowballOne" type="Sprite2D" parent="Player2" unique_id=542223035 groups=["penguins"]]
+visible = false
+position = Vector2(159.99988, 156.66666)
+scale = Vector2(0.5400005, 0.54)
+texture = ExtResource("3_h2yge")
+
+[node name="SnowballThree" type="Sprite2D" parent="Player2" unique_id=1498657446 groups=["penguins"]]
+visible = false
+position = Vector2(-235.8336, 157.49995)
+scale = Vector2(0.60333353, 0.61)
+texture = ExtResource("3_h2yge")
+
+[node name="SnowballThree" type="Sprite2D" parent="Player2/SnowballThree" unique_id=1167953297 groups=["penguins"]]
+position = Vector2(781.74713, 11.538491)
+scale = Vector2(1.0000008, 0.9692306)
+texture = ExtResource("3_h2yge")
+
+[node name="SnowballThree" type="Sprite2D" parent="Player2/SnowballThree/SnowballThree" unique_id=2100318510 groups=["penguins"]]
+position = Vector2(7.9364014, -420.63516)
+scale = Vector2(1.0000008, 0.9692306)
+texture = ExtResource("3_h2yge")
+
+[node name="SnowballTwo" type="Sprite2D" parent="Player2" unique_id=874739642 groups=["penguins"]]
+visible = false
+position = Vector2(693.3332, 280)
+scale = Vector2(0.57008344, 0.60031)
+texture = ExtResource("3_h2yge")
+offset = Vector2(-818.7505, -197.67456)
+
+[node name="SnowballTwo" type="Sprite2D" parent="Player2/SnowballTwo" unique_id=1491824780 groups=["penguins"]]
+position = Vector2(-760.12244, -5.722046e-05)
+scale = Vector2(1.0691886, 1.0112156)
+texture = ExtResource("3_h2yge")
+offset = Vector2(-818.7505, -197.67456)
+
+[node name="redPenguin" type="Sprite2D" parent="Player2" unique_id=730710779 groups=["penguins"]]
+visible = false
+position = Vector2(-3.333334, 3.3333282)
+scale = Vector2(1.918333, 1.9766666)
+texture = ExtResource("8_kek77")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2" unique_id=2065749611]
+shape = SubResource("CapsuleShape2D_qfjdp")
+
+[node name="babyPenguin" parent="." unique_id=1660426652 instance=ExtResource("12_dg77c")]
+visible = false
+position = Vector2(172, 5)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1348810547]
+position = Vector2(195, -90)
+
+[node name="DownBorder" type="CollisionShape2D" parent="StaticBody2D" unique_id=205254906]
+position = Vector2(395, 744)
+shape = SubResource("RectangleShape2D_51520")
+
+[node name="LeftBorder" type="CollisionShape2D" parent="StaticBody2D" unique_id=1103447130]
+position = Vector2(-219, 412.25)
+shape = SubResource("RectangleShape2D_qfjdp")
+
+[node name="UpBorder" type="CollisionShape2D" parent="StaticBody2D" unique_id=1151623712]
+position = Vector2(409, 39)
+shape = SubResource("RectangleShape2D_j8nqg")
+
+[node name="RightBorder" type="CollisionShape2D" parent="StaticBody2D" unique_id=65753233]
+position = Vector2(1015, 381)
+shape = SubResource("RectangleShape2D_f4bny")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=309594217]
+position = Vector2(1076, 46.000004)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("13_ycdy4")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1266254695]
+
+[node name="Score" type="Label" parent="CanvasLayer" unique_id=1193928746]
+offset_left = 1029.0
+offset_top = 57.0
+offset_right = 1136.0
+offset_bottom = 97.0
+text = "0      0 "
+label_settings = SubResource("LabelSettings_ycdy4")
+script = ExtResource("13_w48qg")
+
 [connection signal="area_entered" from="Player/PickupArea" to="Player" method="_on_pickup_area_area_entered"]
+[connection signal="area_exited" from="Player/PickupArea" to="Player" method="_on_pickup_area_area_exited"]
+[connection signal="body_entered" from="Player/PickupArea" to="Player" method="_on_pickup_area_body_entered"]
+[connection signal="timeout" from="Player/Timer" to="Player" method="_on_timer_timeout"]
+[connection signal="area_entered" from="Player2/PickupArea" to="Player2" method="_on_pickup_area_area_entered"]

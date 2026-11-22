@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dm5eiu60si1hs"]
+
+[ext_resource type="Script" uid="uid://se5pab8xohwl" path="res://player_baby.gd" id="1_4fejr"]
+[ext_resource type="Texture2D" uid="uid://dc6nj7wk1br1i" path="res://penguin.webp" id="1_ikq7c"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b1g8g"]
+radius = 246.54077
+height = 729.93115
+
+[node name="babyPenguin" type="Area2D" unique_id=1660426652]
+position = Vector2(287, 181)
+scale = Vector2(0.1622449, 0.14795919)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1170120731]
+position = Vector2(12.327087, -40.551758)
+script = ExtResource("1_4fejr")
+
+[node name="babyPenguin" type="Sprite2D" parent="CharacterBody2D" unique_id=1237587234]
+z_index = 4
+position = Vector2(-6.163565, 20.275866)
+texture = ExtResource("1_ikq7c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1068524403]
+z_index = 6
+position = Vector2(-12.327026, -13.517212)
+shape = SubResource("CapsuleShape2D_b1g8g")
