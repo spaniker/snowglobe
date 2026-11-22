@@ -1,6 +1,6 @@
 # Penguin Game
 
-one sentence: A game where penguins throw snowballs at eachother.
+A game where penguins throw snowballs at eachother.
 
 **live demo:** (https://spaniker.itch.io/penguin-game)
 **built by:** Syona Paniker (@spaniker), Ada Xu (@826284-hue)
